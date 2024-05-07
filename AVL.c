@@ -27,7 +27,7 @@ struct NoAVL *criarNo(int dado)
     novoNo->dado = dado;     // Armazena o valor fornecido dentro do nó
     novoNo->esquerda = NULL; // Inicializa o ponteiro para o filho esquerdo como nulo
     novoNo->direita = NULL;  // Inicializa o ponteiro para o filho direito como nulo
-    novoNo->altura = 1;      // Inicializa a altura do nó como 1
+    novoNo->altura = 0;      // Inicializa a altura do nó como 0
     return novoNo;           // Retorna o ponteiro para o novo nó criado
 }
 
@@ -37,7 +37,7 @@ int altura(struct NoAVL *no)
 {
     // Verifica se o nó é nulo
     if (no == NULL)
-        return 0;      // Se for nulo, retorna 0
+        return -1;      // Se for nulo, retorna 0
     return no->altura; // Retorna a altura armazenada no nó
 }
 
@@ -317,8 +317,8 @@ exiba a altura da árvore resultante.*/
 int alturaTree(struct NoAVL *no)
 {
     if (no == NULL)
-    { // Se o nó for nulo, a altura é 0
-        return 0;
+    { // Se o nó for nulo, a altura é -1
+        return -1;
     }
 
     // Calcula a altura da subárvore esquerda e direita
@@ -336,6 +336,27 @@ int alturaTree(struct NoAVL *no)
     }
 }
 
+// Buscar elemento na árvore
+struct NoAVL *buscarNo(struct NoAVL *raiz, int valor)
+{
+    if (raiz == NULL || raiz->dado == valor)
+        return raiz;
+
+    if (valor < raiz->dado)
+        return buscarNo(raiz->esquerda, valor);
+    else
+        return buscarNo(raiz->direita, valor);
+}
+
+/* // Teste de altura
+struct NoAVL *raiz = NULL;
+raiz = inserir(raiz, 30);
+raiz = inserir(raiz, 31);
+printf("%d",altura(buscarNo(raiz,NULL))); // ÁRVORE VAZIA = -1
+printf("%d",altura(buscarNo(raiz,31))); // FOLHA = 0;
+mostraArvore(raiz,3);
+*/
+
 /*4 - Escreva uma função para verificar se uma árvore é uma árvore AVL válida,
 ou seja, se ela satisfaz todas as propriedades de uma árvore AVL.
  Teste sua função em diferentes árvores AVL, incluindo árvores corretas
@@ -343,9 +364,9 @@ ou seja, se ela satisfaz todas as propriedades de uma árvore AVL.
 */
 int main()
 {
-    struct NoAVL *raiz = NULL;
 
-    // Inserindo elementos na árvore AVL
+    struct NoAVL *raiz = NULL;
+    //Inserindo elementos na árvore AVL
     raiz = inserir(raiz, 30);
     raiz = inserir(raiz, 24);
     raiz = inserir(raiz, 20);
@@ -399,8 +420,6 @@ int main()
     printf("\nLetra J - Inserir 21 ---------------------------\n");
     raiz = inserir(raiz, 21);
     mostraArvore(raiz, 3);
-
-
 
     return 0;
 }
