@@ -152,5 +152,3 @@ int contarParesFila(struct Fila *f) {
     return count;
 }
 ```
-
-Essas funções fornecem a lógica necessária para operar com pilhas e filas nas condições especificadas.
