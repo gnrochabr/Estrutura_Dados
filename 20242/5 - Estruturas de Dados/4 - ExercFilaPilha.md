@@ -1,4 +1,4 @@
-## CORREÇÃO DOS EXERCÍCIOS ##
+## CORREÇÃO DOS EXERCÍCIOS - 04/09 ##
 ### 1. Operações com Pilhas (P1 e P2)
 
 #### a) Testar Igualdade
