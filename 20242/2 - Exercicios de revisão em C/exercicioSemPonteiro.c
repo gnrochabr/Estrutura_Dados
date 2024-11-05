@@ -42,3 +42,5 @@ void contaPrimos(int numero[10]){
     }
     printf("são primos!");
 }
+
+//1 - 
